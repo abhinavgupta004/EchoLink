@@ -1,31 +1,53 @@
-import React from "react";
-import "../App.css";
-import { Link } from "react-router-dom";
-export default function Landing() {
-    return (
-        <div className="landingpagecontainer">
-           <nav>
-            <div className="navheader">
-                <h2>Echo Link</h2>
-            </div>
-            <div className="navlist">
-                <p>Join As Guest</p>
-                <p>Register</p>
-                <button>Login</button>
-            </div>
-           </nav>
+import React from 'react'
+import "../App.css"
+import { Link, useNavigate } from 'react-router-dom'
+export default function LandingPage() {
 
-           <div className="landingmaincontainer">
-            <div><h1><span style={{color: "#ff9839"}}>Connect </span>With Your Loved Ones</h1>
-            <p>Cover a distance by using Echo Link</p>
-            <div role="button">
-                <Link to ={"/auth"}>Get Started</Link>
+
+    const router = useNavigate();
+
+    return (
+        <div className='landingPageContainer'>
+            <nav>
+                <div className='navHeader'>
+                    <h2>Apna Video Call</h2>
+                </div>
+                <div className='navlist'>
+                    <p onClick={() => {
+                        router("/aljk23")
+                    }}>Join as Guest</p>
+                    <p onClick={() => {
+                        router("/auth")
+
+                    }}>Register</p>
+                    <div onClick={() => {
+                        router("/auth")
+
+                    }} role='button'>
+                        <p>Login</p>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div className="landingMainContainer">
+                <div>
+                    <h1><span style={{ color: "#FF9839" }}>Connect</span> with your loved Ones</h1>
+
+                    <p>Cover a distance by Apna Video Call</p>
+                    <div role='button'>
+                        <Link to={"/auth"}>Get Started</Link>
+                    </div>
+                </div>
+                <div>
+
+                    <img src="/mobile.png" alt="" />
+
+                </div>
             </div>
-            </div>
-            <div>
-                <img src="/mobile.png" alt="#"/>
-            </div>
-           </div>
+
+
+
         </div>
-    );
+    )
 }

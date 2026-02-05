@@ -4,7 +4,7 @@ import { Badge, IconButton, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import VideocamOffIcon from '@mui/icons-material/VideocamOff'
-import styles from "../styles/videoComponent.module.css";
+import style from "../style/videoComponent.module.css";
 import CallEndIcon from '@mui/icons-material/CallEnd'
 import MicIcon from '@mui/icons-material/Mic'
 import MicOffIcon from '@mui/icons-material/MicOff'
@@ -466,14 +466,14 @@ export default function VideoMeetComponent() {
                 </div> :
 
 
-                <div className={styles.meetVideoContainer}>
+                <div className={style.meetVideoContainer}>
 
-                    {showModal ? <div className={styles.chatRoom}>
+                    {showModal ? <div className={style.chatRoom}>
 
-                        <div className={styles.chatContainer}>
+                        <div className={style.chatContainer}>
                             <h1>Chat</h1>
 
-                            <div className={styles.chattingDisplay}>
+                            <div className={style.chattingDisplay}>
 
                                 {messages.length !== 0 ? messages.map((item, index) => {
 
@@ -489,7 +489,7 @@ export default function VideoMeetComponent() {
 
                             </div>
 
-                            <div className={styles.chattingArea}>
+                            <div className={style.chattingArea}>
                                 <TextField value={message} onChange={(e) => setMessage(e.target.value)} id="outlined-basic" label="Enter Your chat" variant="outlined" />
                                 <Button variant='contained' onClick={sendMessage}>Send</Button>
                             </div>
@@ -499,7 +499,7 @@ export default function VideoMeetComponent() {
                     </div> : <></>}
 
 
-                    <div className={styles.buttonContainers}>
+                    <div className={style.buttonContainers}>
                         <IconButton onClick={handleVideo} style={{ color: "white" }}>
                             {(video === true) ? <VideocamIcon /> : <VideocamOffIcon />}
                         </IconButton>
@@ -523,9 +523,9 @@ export default function VideoMeetComponent() {
                     </div>
 
 
-                    <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
+                    <video className={style.meetUserVideo} ref={localVideoref} autoPlay muted></video>
 
-                    <div className={styles.conferenceView}>
+                    <div className={style.conferenceView}>
                         {videos.map((video) => (
                             <div key={video.socketId}>
                                 <video
