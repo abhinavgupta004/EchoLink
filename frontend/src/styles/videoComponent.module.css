@@ -2,63 +2,58 @@
     position: relative;
     height: 100vh;
     width: 100vw;
-    background: rgb(1, 4, 48);
-    overflow: hidden;   /* prevent horizontal scroll */
+    background-color: rgb(68, 65, 63);
+    overflow: hidden;
 }
 
 /* Local small self video (PiP) */
 .meetUserVideo {
     position: absolute;
     bottom: 80px;
-    left: 10px;          /* move away from chat panel */
+    left: 10px;
     height: 150px;
     width: 200px;
     object-fit: cover;
     border-radius: 12px;
-    z-index: 5;          /* below chat panel */
+    z-index: 5;
 }
 
-
-/* Buttons at bottom */
-.buttonContainers {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
-}
-
-.buttonContainers svg {
-    font-size: 3rem;
-}
 
 /* ================= VIDEO GRID ================= */
 
 .conferenceView {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  padding: 10px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    height: calc(100vh - 80px); /* leave space for buttons */
+    z-index: 1;
 }
+
+
 
 /* normal size */
 .normalVideo {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 /* clicked video (large) */
 .activeVideo {
   grid-column: span 2;
   grid-row: span 2;
-  height: 400px;
+  height: 30vh;
+  max-height: 320px;
+  min-height: 250px;
   border: 3px solid #00ffcc;
   border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 
@@ -68,6 +63,26 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+
+
+/* ================= BUTTONS ================= */
+
+.buttonContainers {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    z-index: 30;   /* LOWER than chatRoom */
+    pointer-events: auto;
+}
+
+
+.buttonContainers svg {
+    font-size: 3rem;
+    cursor: pointer;
+}
+
 
 /* ================= CHAT PANEL ================= */
 
@@ -82,7 +97,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    z-index: 20;   /* must be higher than meetUserVideo */
+    z-index: 50;   /* HIGHER than buttons */
 }
 
 
@@ -96,7 +111,7 @@
 /* Chat messages area (scrollable) */
 .chattingDisplay {
     flex: 1;
-    overflow-y: auto;     /* vertical scroll */
+    overflow-y: auto;
     padding: 10px;
 }
 
