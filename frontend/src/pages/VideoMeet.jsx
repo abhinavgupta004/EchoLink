@@ -55,6 +55,7 @@ export default function VideoMeetComponent() {
     let [username, setUsername] = useState("");
 
     const videoRef = useRef([])
+    const [activeVideo, setActiveVideo] = useState(null);
 
     let [videos, setVideos] = useState([])
 
@@ -525,26 +526,29 @@ export default function VideoMeetComponent() {
 
                     <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
 
-                    <div className={styles.conferenceView}>
-                        {videos.map((video) => (
-                            <div key={video.socketId}>
-                                <video
+<div className={styles.conferenceView}>
+  {videos.map((video) => (
+    <video
+      key={video.socketId}
+      data-socket={video.socketId}
 
-                                    data-socket={video.socketId}
-                                    ref={ref => {
-                                        if (ref && video.stream) {
-                                            ref.srcObject = video.stream;
-                                        }
-                                    }}
-                                    autoPlay
-                                >
-                                </video>
-                            </div>
+      className={
+        activeVideo === video.socketId
+          ? styles.activeVideo
+          : styles.normalVideo
+      }
 
-                        ))}
+      onClick={() => setActiveVideo(video.socketId)}
 
-                    </div>
-
+      ref={ref => {
+        if (ref && video.stream) {
+          ref.srcObject = video.stream;
+        }
+      }}
+      autoPlay
+    />
+  ))}
+</div>
                 </div>
 
             }
